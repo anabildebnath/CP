@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    long long n;
+    cin >> n;
+    bool prime[n+1];
+    memset(prime, true, sizeof(prime));//using memset to set all value points of this array as true
+
+    for (int i = 2; i*i <= n; i++)//just have to iterate over sqrt(n) that would be enough for checking out all the prime numbers
+    {
+        if (prime[i] == true)
+        {
+            prime[i] = false;
+            for (int j = i * i; j <= n; j+=i)// j will jump i steps every time
+            {
+                prime[j] = false;
+            }
+        }
+    }
+    for (int i = 2; i <= n; i++)
+    {
+        if (prime[i])
+        {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+//DRAGHIMA
